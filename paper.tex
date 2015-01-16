@@ -1,0 +1,77 @@
+% -*- coding: sjis-dos -*-
+% 使用したTeXの種類とバージョン         
+% 使用したsice.clsファイルのバージョン  
+% 追加したマクロファイル名              
+% 印刷したプリンタ名と計算機名          
+
+\documentclass[a4j,10pt,twocolumn]{jarticle}
+
+
+% http://www.si-sice.org/si2012/format.html
+% 
+% 原稿用紙サイズはA4版（縦297mm×横210mm）とし，余白部分は左右15mm，
+% 上20mm，下27mmを確保して下さい．（プログラム委員会側でヘッダ・フッ
+% タ部分に情報を追加する予定ですので，ご注意下さい．）よって，原稿作
+% 成領域は縦250mm×横180mm の枠内となります．
+%
+\usepackage[a4paper,width=180mm,height=250mm,columnsep=7mm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[dvipdfm]{graphicx}
+\usepackage{subfigure}
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Table}
+
+\makeatletter
+\def\section{\@startsection{section}{1}{\z@}{.5ex plus .2ex minus .2ex}%
+                        {.4ex plus .2ex minus .2ex}{\large\bfseries}}
+\def\thesection{\arabic{section}.}
+\def\subsection{\@startsection{subsection}{1}{\z@}%
+                        %{.1ex plus .1ex minus .2ex}%
+                        {0.3ex}%
+                        %{.2ex plus .1ex minus .1ex}%
+                        {0.2ex}%
+                        {\normalsize\bfseries}}
+\def\thesubsection{\arabic{section}.\arabic{subsection}}
+\def\thefootnote{\fnsymbol{footnote}}
+\makeatother
+
+
+
+
+\setcounter{page}{1}
+
+%% <local definitions>
+%% </local definitions>
+\baselineskip=3mm
+
+\begin{document}
+\pagestyle{empty}
+\thispagestyle{empty}
+
+\twocolumn[%
+\begin{center}
+ {\Large タイトル}\vspace{.5ex}\\
+\large
+立命館大学大学院　
+情報理工学研究科　
+情報理工学専攻　
+6612140003-1　
+池上 貴之
+\\
+{\Large\sffamily title}\vspace{1ex}
+%\\
+%{\fontfamily{txr}\selectfont Takayuki IKEGAMI,}
+\end{center}
+\vspace{1em}
+]
+
+\input{intro}
+\input{conclusion}
+
+
+\begin{thebibliography}{99}% 文献が10以上のとき99，10未満のとき9
+\end{thebibliography}
+
+\end{document}
+
