@@ -1,20 +1,27 @@
 \section{LDAを用いた物体のトピック分類}
-物体分類を行うために(LDA
-
-LDAではグラフィカルモデルを用いてトピック推定を行う.
+物体のトピック分類を行うためにトピックモデリング手法の1つであるLDA\cite{lda}を用いる.
+LDAではパラメータ$\alpha$と$\beta$を用いてドキュメントが生成されると仮定する.
+これを表したLDAのグラフィカルモデルは以下のようになる.
 \begin{figure}[h!]
 	\begin{center}
-		\includegraphics[width=0.30\textwidth,clip]{img/graphicalmodel.eps}
+		\includegraphics[width=0.25\textwidth,clip]{img/graphicalmodel.eps}
 	\end{center}
 	\caption{LDAにおけるグラフィカルモデル}
 	\label{fig:graphical_model}
 \end{figure} 
 \par
 %グラフィカルモデルにおける単語は入力画像をBag of Feature(BoF)によって表現する.
-グラフィカルモデルにおける1ドキュメントは1画像に該当し, 
-1画像の中に現れる局所特徴をBoFで表現したものが単語に該当する.
-具体的には, 128次元のSIFT\cite{}を用いて変換した後, 
-K平均法\cite{kmeans}を用いてベクトル量子化し, K個のクラスに分けたヒストグラムを用いる.
+LDAのグラフィカルモデルにおける1ドキュメントは1画像に該当し, 
+1画像の中に現れる局所特徴をBag of Feature(BoF)で表現したものが単語に該当する.
+具体的には, 128次元のSIFT\cite{sift}を用いて変換した後, 
+K平均法\cite{kmeans}を用いてベクトル量子化し, $T$個のクラスに分けたヒストグラムを用いる.
+\par
+このような画像から作成したドキュメントの集合とトピック数$K$を入力とする.
+学習にはギブスサンプラーを用いてトピックの事後分布から$z$をサンプリングする(式(\ref{gibbs})).
+\begin{equation}
+p(z = t|w, d) \propto ( \alpha_{t} + n_{t|d} ) \frac{\beta + n_w}{\beta V + n_t}
+\label{gibbs}
+\end{equation}
 \par
 
 
